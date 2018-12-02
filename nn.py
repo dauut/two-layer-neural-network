@@ -30,7 +30,7 @@ def predict(model, X):
     return np.argmax(y_pred, axis=1)
 
 
-def build_model(X, y, nn_hdim, num_passes, print_loss):
+def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
     model = {}
     input_dimensions = 2
     output_dimensions = 2
@@ -83,7 +83,7 @@ def build_model(X, y, nn_hdim, num_passes, print_loss):
     return model
 
 
-def build_model_691(X, y, nn_hdim, num_passes=20000, print_loss=True):
+def build_model_691(X, y, nn_hdim, num_passes=20000, print_loss=False):
     model = {}
     input_dimensions = 2
     output_dimensions = 3

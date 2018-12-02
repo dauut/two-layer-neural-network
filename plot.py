@@ -17,10 +17,10 @@ plt.title("Decision Boundary for hidden layer size 3")
 
 plt.figure(figsize=(16, 32))
 hidden_layer_dimensions = [1, 2, 3, 4]
-# for i, nn_hdim in enumerate(hidden_layer_dimensions):
-#     plt.subplot(5, 2, i + 1)
-#     plt.title('HiddenLayerSize%d' % nn_hdim)
-#     model = build_model(X, y, nn_hdim, 20000, False)
-#     # model = build_model_691(X, y, nn_hdim, 20000, False)
-#     plot_decision_boundary(lambda x: predict(model, x), X, y)
+for i, nn_hdim in enumerate(hidden_layer_dimensions):
+    plt.subplot(5, 2, i + 1)
+    plt.title('HiddenLayerSize%d' % nn_hdim)
+    # model = build_model(X, y, nn_hdim, 20000, False)
+    model = build_model_691(X, y, nn_hdim, 20000, False)
+    plot_decision_boundary(lambda x: predict(model, x), X, y)
 plt.show()
