@@ -12,6 +12,8 @@ def calculate_loss(model, X, y):
     h = np.tanh(a)
     z = h.dot(weight2) + bias2
     y_pred = np.exp(z) / np.sum(np.exp(z), axis=1, keepdims=True)  # softmax
+
+    # cross entropy loss
     loss = (-1. / number_of_examples) * np.sum(np.log(y_pred[range(number_of_examples), y]))
 
     return loss
@@ -33,19 +35,23 @@ def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
     model = {}
     input_dimensions = 2
     output_dimensions = 2
+    # random weight assigning
     weight1 = np.random.randn(input_dimensions, nn_hdim)
     weight2 = np.random.randn(nn_hdim, output_dimensions)
+    # initial biases = 0
     bias1 = np.zeros((1, nn_hdim))
     bias2 = np.zeros((1, output_dimensions))
     learning_rate = 0.02
 
     for i in range(num_passes):
+
         # prediction
         a = X.dot(weight1) + bias1
         h = np.tanh(a)
         z = h.dot(weight2) + bias2
         y_pred = np.exp(z) / np.sum(np.exp(z), axis=1, keepdims=True)  # softmax
 
+        # derivatives
         # dL/dy = y_hat - y
         dLdy = y_pred
         for j in range(len(y_pred)):
@@ -58,7 +64,6 @@ def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
                 dLdy[j, 0] = y_pred[j, 0]
                 dLdy[j, 1] = y_pred[j, 1] - 1
 
-        # derivatives
         # dL/da
         dLda = (1 - (np.tanh(a) * np.tanh(a))) * dLdy.dot(weight2.T)
         # dL/dWeight2
@@ -83,6 +88,7 @@ def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
 
 
 def build_model_691(X, y, nn_hdim, num_passes=20000, print_loss=False):
+    # most of the operations are same
     model = {}
     input_dimensions = 2
     output_dimensions = 3
