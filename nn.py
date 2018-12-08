@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-
 # Loss Calculation with current model
 def calculate_loss(model, X, y):
     number_of_examples = len(X)
