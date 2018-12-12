@@ -12,3 +12,5 @@
  propagation performed for making a prediction, and backpropagation applied to update the network parameters.
  #### Build Model 691 
  This function takes 2 input and classify 3 output labels. 
+ 
+ #### Results
